@@ -36,8 +36,5 @@ jobs:
         node-version: 14
     - name: install dependencies
       run: yarn && npm install electron-packager -g
-
-    - name: Package
-      run: electron-packager . --arch=x64 && electron-packager . --arch=arm64  && electron-packager . --arch=ia32
-    - name: build
+   - name: build
       run: npm run pack:win32
