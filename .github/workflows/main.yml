@@ -10,7 +10,7 @@ jobs:
       with:
         node-version: 14
     - name: install dependencies
-      run: npm install
+      run: yarn && npm install electron-packager -g
     - name: build
       run: npm run pack:linux
 
@@ -18,11 +18,12 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
+
     - uses: actions/setup-node@master
       with:
         node-version: 14
     - name: install dependencies
-      run: npm install
+      run: yarn && npm install electron-packager -g
     - name: build
       run: npm run pack:osx
 
@@ -34,6 +35,9 @@ jobs:
       with:
         node-version: 14
     - name: install dependencies
-      run: npm install
+      run: yarn && npm install electron-packager -g
+
+    - name: Package
+      run: electron-packager . --arch=x64 && electron-packager . --arch=arm64  && electron-packager . --arch=ia32
     - name: build
       run: npm run pack:win32

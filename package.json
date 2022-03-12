@@ -4,15 +4,16 @@
     "description": "Traffic Exchange Software",
     "main": "system.js",
     "scripts": {
-        "start": "electron .",
-        "pack:osx": "electron-packager . Exchanger --out=../dist/osx --asar=true --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true",
-        "pack:linux": "electron-packager . Exchanger --out=../dist/linux --asar=true --platform=linux --arch=x64 --icon=build/png/512x512.png --prune=true",
-        "pack:win32": "electron-packager . Exchanger --out=../dist/win --asar=true --platform=win32 --arch=ia32 --icon=build/icon.ico --prune=true",
-        "build": "npm run pack:osx && npm run pack:linux && npm run pack:win32",
+        "start": "electron-forge start",
         "package": "electron-forge package",
         "make": "electron-forge make",
         "publish": "electron-forge publish",
-        "lint": "echo \"No linting configured\""
+        "lint": "echo \"No linting configured\"",
+        "pack:osx": "electron-builder -m --x64 --arm64",
+        "pack:linux": "electron-builder -l --x64 --ia32 --armv7l --arm64",
+        "pack:win32": "electron-packager . --arch=x64 && electron-packager . --arch=arm64",
+        "build": "npm run pack:osx && npm run pack:linux && npm run pack:win32",
+        "clean": "trash node_modules nativefier-gui-darwin-x64 nativefier-gui-darwin-x64.zip nativefier-gui-darwin-arm64 nativefier-gui-darwin-arm64.zip"
     },
     "keywords": [
         "Traffic",
@@ -23,6 +24,7 @@
     "author": "HitFather",
     "license": "CC0-1.0",
     "devDependencies": {
+        "@electron-forge/cli": "^6.0.0-beta.63",
         "@electron-forge/publisher-github": "^6.0.0-beta.63",
         "electron": "^3.0.1",
         "electron-builder": "^20.38.2",
@@ -45,34 +47,19 @@
             "output": "dist"
         },
         "win": {
-            "target": [
-                {
-                    "target": "nsis",
-                    "arch": [
-                        "ia32"
-                    ]
-                }
+            "publish": [
+                "github"
             ]
         },
         "mac": {
-            "target": [
-                {
-                    "target": "dmg",
-                    "arch": [
-                        "x64"
-                    ]
-                }
+            "publish": [
+                "github"
             ],
             "category": "public.app-category.business"
         },
         "linux": {
-            "target": [
-                {
-                    "target": "debian package (deb)",
-                    "arch": [
-                        "ia32"
-                    ]
-                }
+            "publish": [
+                "github"
             ]
         }
     },
@@ -80,26 +67,26 @@
         "forge": {
             "packagerConfig": {},
             "makers": [
-              {
-                "name": "@electron-forge/maker-squirrel",
-                "config": {
-                  "name": "electron_publish_example"
+                {
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "name": "nativefier_gui"
+                    }
+                },
+                {
+                    "name": "@electron-forge/maker-zip",
+                    "platforms": [
+                        "darwin"
+                    ]
+                },
+                {
+                    "name": "@electron-forge/maker-deb",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
                 }
-              },
-              {
-                "name": "@electron-forge/maker-zip",
-                "platforms": [
-                  "darwin"
-                ]
-              },
-              {
-                "name": "@electron-forge/maker-deb",
-                "config": {}
-              },
-              {
-                "name": "@electron-forge/maker-rpm",
-                "config": {}
-              }
             ],
             "publishers": [
                 {
