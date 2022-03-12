@@ -24,8 +24,6 @@ jobs:
         node-version: 14
     - name: install dependencies
       run: npm install
-
-    - name: publish
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: electron-forge publish
@@ -42,7 +40,6 @@ jobs:
         node-version: 14
     - name: install dependencies
       run: npm install
-    - name: publish
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: electron-forge publish
@@ -59,7 +56,6 @@ jobs:
         node-version: 14
     - name: install dependencies
       run: npm install
-    - name: publish
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: electron-forge publish
