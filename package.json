@@ -19,13 +19,13 @@
     "author": "Hassan Azzi",
     "license": "CC0-1.0",
     "devDependencies": {
+        "@electron-forge/publisher-github": "^6.0.0-beta.63",
         "electron": "^3.0.1",
         "electron-builder": "^20.38.2",
         "electron-packager": "^13.0.0",
         "electron-toolkit": "^1.0.24",
         "electron-winstaller": "^2.7.0"
     },
-    "dependencies": {},
     "repository": {
         "type": "git",
         "url": "https://github.com/mrefil/exchanger.git"
@@ -70,6 +70,21 @@
                     ]
                 }
             ]
+        }
+    },
+    "config": {
+        "forge": {
+          "publishers": [
+            {
+              "name": "@electron-forge/publisher-github",
+              "config": {
+                "repository": {
+                  "owner": "hitfather",
+                  "name": "hitfather"
+                }
+              }
+            }
+          ]
         }
     }
 }
