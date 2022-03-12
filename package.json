@@ -4,11 +4,11 @@
     "description": "Traffic Exchange Software",
     "main": "system.js",
     "scripts": {
-        "start": "electron .",
-        "pack:osx": "electron-packager . Exchanger --out=../dist/osx --asar=true --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true",
-        "pack:linux": "electron-packager . Exchanger --out=../dist/linux --asar=true --platform=linux --arch=x64 --icon=build/png/512x512.png --prune=true",
-        "pack:win32": "electron-packager . Exchanger --out=../dist/win --asar=true --platform=win32 --arch=ia32 --icon=build/icon.ico --prune=true",
-        "build": "npm run pack:osx && npm run pack:linux && npm run pack:win32"
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "lint": "echo \"No linting configured\""
     },
     "keywords": [
         "Traffic",
@@ -16,7 +16,7 @@
         "System",
         "Surfow"
     ],
-    "author": "Hassan Azzi",
+    "author": "HitFather",
     "license": "CC0-1.0",
     "devDependencies": {
         "@electron-forge/publisher-github": "^6.0.0-beta.63",
@@ -74,13 +74,37 @@
     },
     "config": {
         "forge": {
+            "packagerConfig": {},
+            "makers": [
+              {
+                "name": "@electron-forge/maker-squirrel",
+                "config": {
+                  "name": "electron_publish_example"
+                }
+              },
+              {
+                "name": "@electron-forge/maker-zip",
+                "platforms": [
+                  "darwin"
+                ]
+              },
+              {
+                "name": "@electron-forge/maker-deb",
+                "config": {}
+              },
+              {
+                "name": "@electron-forge/maker-rpm",
+                "config": {}
+              }
+            ],
             "publishers": [
                 {
                     "name": "@electron-forge/publisher-github",
                     "config": {
                         "repository": {
                             "owner": "hitfather",
-                            "name": "hitfather"
+                            "name": "hitfather",
+                            "draft": true
                         }
                     }
                 }
