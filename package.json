@@ -9,9 +9,9 @@
         "make": "electron-forge make",
         "publish": "electron-forge publish",
         "lint": "echo \"No linting configured\"",
-        "pack:osx": "electron-packager . Exchanger --out=../dist/osx --asar=true --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true",
-        "pack:linux": "electron-packager . Exchanger --out=../dist/linux --asar=true --platform=linux --arch=x64 --icon=build/png/512x512.png --prune=true",
-        "pack:win32": "electron-packager . Exchanger --out=../dist/win --asar=true --platform=win32 --arch=ia32 --icon=build/icon.ico --prune=true",
+        "pack:osx": "electron-packager . Exchanger --out=dist/osx --asar=true --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true",
+        "pack:linux": "electron-packager . Exchanger --out=dist/linux --asar=true --platform=linux --arch=x64 --icon=build/png/512x512.png --prune=true",
+        "pack:win32": "electron-packager . Exchanger --out=dist/win --asar=true --platform=win32 --arch=ia32 --icon=build/icon.ico --prune=true",
         "build": "npm run pack:osx && npm run pack:linux && npm run pack:win32",
         "clean": "trash node_modules nativefier-gui-darwin-x64 nativefier-gui-darwin-x64.zip nativefier-gui-darwin-arm64 nativefier-gui-darwin-arm64.zip"
     },
@@ -62,6 +62,9 @@
                 "github"
             ]
         }
+    },
+    "portable": {
+      "unicode": false
     },
     "config": {
         "forge": {
