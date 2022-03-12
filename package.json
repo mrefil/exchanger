@@ -26,6 +26,10 @@
         "electron-winstaller": "^2.7.0"
     },
     "dependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mrefil/exchanger.git"
+    },
     "build": {
         "appId": "com.electron.Exchanger",
         "copyright": "Copyright © 2018 Hassan Azzi",
