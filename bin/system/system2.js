@@ -422,7 +422,7 @@ function kill_browsing(text="Home")
     }, 2000);
     webview.clearHistory();
     webview.stop();
-    webview.setAttribute( 'httpreferrer', "http://surfow.info/");
+    webview.setAttribute( 'httpreferrer', "https://hitfather.com/");
     webview.setAttribute( 'useragent', "");
     webview.setAttribute( 'src', "data3.html");
 }

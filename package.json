@@ -1,6 +1,6 @@
 {
     "name": "Exchanger",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "traffic exchange software",
     "main": "system.js",
     "scripts": {
@@ -33,7 +33,7 @@
         "electronVersion": "3.0.1",
         "asar": true,
         "directories": {
-            "app": "D:\\surfow_app",
+            "app": "C:\\surfow_app",
             "output": "dist"
         },
         "win": {
