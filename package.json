@@ -1,118 +1,123 @@
 {
-    "name": "Exchanger",
-    "version": "1.1.0",
-    "description": "Traffic Exchange Software",
-    "main": "system.js",
-    "scripts": {
-        "start": "electron .",
-        "pack:osx": "electron-packager . Exchanger --out=../dist/osx --asar=true --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true",
-        "pack:linux": "electron-packager . Exchanger --out=../dist/linux --asar=true --platform=linux --arch=x64 --icon=build/png/512x512.png --prune=true",
-        "pack:win32": "electron-packager . Exchanger --out=../dist/win --asar=true --platform=win32 --arch=ia32 --icon=build/icon.ico --prune=true",
-        "build": "npm run pack:osx && npm run pack:linux && npm run pack:win32",
-        "package": "electron-forge package",
-        "make": "electron-forge make",
-        "publish": "electron-forge publish",
-        "lint": "echo \"No linting configured\""
+  "name": "Exchanger",
+  "version": "1.1.0",
+  "description": "Traffic Exchange Software",
+  "main": "system.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "pack:osx": "electron-packager . Exchanger --out=../dist/osx --asar=true --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true",
+    "pack:linux": "electron-packager . Exchanger --out=../dist/linux --asar=true --platform=linux --arch=x64 --icon=build/png/512x512.png --prune=true",
+    "pack:win32": "electron-packager . Exchanger --out=../dist/win --asar=true --platform=win32 --arch=ia32 --icon=build/icon.ico --prune=true",
+    "build": "npm run pack:osx && npm run pack:linux && npm run pack:win32",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [
+    "Traffic",
+    "Exchange",
+    "System",
+    "Surfow"
+  ],
+  "author": "HitFather",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
+    "@electron-forge/publisher-github": "^6.0.0-beta.63",
+    "electron": "^3.0.1",
+    "electron-toolkit": "^1.0.24"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrefil/exchanger.git"
+  },
+  "build": {
+    "appId": "com.electron.Exchanger",
+    "copyright": "Copyright © 2018 Hassan Azzi",
+    "productName": "Exchanger",
+    "electronVersion": "3.0.1",
+    "asar": true,
+    "directories": {
+      "app": "C:\\surfow_app",
+      "output": "dist"
     },
-    "keywords": [
-        "Traffic",
-        "Exchange",
-        "System",
-        "Surfow"
-    ],
-    "author": "HitFather",
-    "license": "CC0-1.0",
-    "devDependencies": {
-        "@electron-forge/publisher-github": "^6.0.0-beta.63",
-        "electron": "^3.0.1",
-        "electron-builder": "^20.38.2",
-        "electron-packager": "^13.0.0",
-        "electron-toolkit": "^1.0.24",
-        "electron-winstaller": "^2.7.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mrefil/exchanger.git"
-    },
-    "build": {
-        "appId": "com.electron.Exchanger",
-        "copyright": "Copyright © 2018 Hassan Azzi",
-        "productName": "Exchanger",
-        "electronVersion": "3.0.1",
-        "asar": true,
-        "directories": {
-            "app": "C:\\surfow_app",
-            "output": "dist"
-        },
-        "win": {
-            "target": [
-                {
-                    "target": "nsis",
-                    "arch": [
-                        "ia32"
-                    ]
-                }
-            ]
-        },
-        "mac": {
-            "target": [
-                {
-                    "target": "dmg",
-                    "arch": [
-                        "x64"
-                    ]
-                }
-            ],
-            "category": "public.app-category.business"
-        },
-        "linux": {
-            "target": [
-                {
-                    "target": "debian package (deb)",
-                    "arch": [
-                        "ia32"
-                    ]
-                }
-            ]
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
         }
+      ]
     },
-    "config": {
-        "forge": {
-            "packagerConfig": {},
-            "makers": [
-              {
-                "name": "@electron-forge/maker-squirrel",
-                "config": {
-                  "name": "electron_publish_example"
-                }
-              },
-              {
-                "name": "@electron-forge/maker-zip",
-                "platforms": [
-                  "darwin"
-                ]
-              },
-              {
-                "name": "@electron-forge/maker-deb",
-                "config": {}
-              },
-              {
-                "name": "@electron-forge/maker-rpm",
-                "config": {}
-              }
-            ],
-            "publishers": [
-                {
-                    "name": "@electron-forge/publisher-github",
-                    "config": {
-                        "repository": {
-                            "owner": "hitfather",
-                            "name": "hitfather",
-                            "draft": true
-                        }
-                    }
-                }
-            ]
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64"
+          ]
         }
+      ],
+      "category": "public.app-category.business"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "debian package (deb)",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ]
     }
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "Exchanger"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "hitfather",
+              "name": "hitfather",
+              "draft": true
+            }
+          }
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  }
 }

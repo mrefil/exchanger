@@ -2,3 +2,5 @@ node_modules
 dist
 surfow_app.zip
 latest.zip
+
+out/
