@@ -1,6 +1,6 @@
 {
     "name": "Exchanger",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "description": "Traffic Exchange Software",
     "main": "system.js",
     "scripts": {
@@ -74,17 +74,17 @@
     },
     "config": {
         "forge": {
-          "publishers": [
-            {
-              "name": "@electron-forge/publisher-github",
-              "config": {
-                "repository": {
-                  "owner": "hitfather",
-                  "name": "hitfather"
+            "publishers": [
+                {
+                    "name": "@electron-forge/publisher-github",
+                    "config": {
+                        "repository": {
+                            "owner": "hitfather",
+                            "name": "hitfather"
+                        }
+                    }
                 }
-              }
-            }
-          ]
+            ]
         }
     }
 }
