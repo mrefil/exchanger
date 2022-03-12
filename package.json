@@ -1,7 +1,7 @@
 {
     "name": "Exchanger",
     "version": "1.0.2",
-    "description": "traffic exchange software",
+    "description": "Traffic exchange software",
     "main": "system.js",
     "scripts": {
         "start": "electron .",
