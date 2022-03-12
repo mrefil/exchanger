@@ -28,7 +28,7 @@ jobs:
     - name: publish
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: npm run pack:linux
+      run: electron-forge publish
 
   publish_on_mac:
     runs-on: macos-latest
@@ -45,7 +45,7 @@ jobs:
     - name: publish
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: npm run pack:osx
+      run: electron-forge publish
 
   publish_on_win:
     runs-on: windows-latest
@@ -62,4 +62,4 @@ jobs:
     - name: publish
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: npm run pack:win32
+      run: electron-forge publish
